@@ -1,0 +1,27 @@
+{
+  "name": "gulp-xgettext",
+  "version": "0.1.0",
+  "description": "Gulp plugin for GNU xgettext utility",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JustBlackBird/gulp-xgettext.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JustBlackBird/gulp-xgettext/issues"
+  },
+  "author": {
+    "name": "Dmitriy Simushev",
+    "email": "simushevds@gmail.com"
+  },
+  "main": "index.js",
+  "keywords": [
+    "gulpplugin",
+    "gettext",
+    "xgettext"
+  ],
+  "dependencies": {
+    "gulp-util": "~3.0.0",
+    "through2": "^0.5.1"
+  }
+}
