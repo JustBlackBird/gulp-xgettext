@@ -1,4 +1,4 @@
-# gulp-xgettext
+# gulp-xgettext [![NPM version](https://badge.fury.io/js/gulp-xgettext.png)](https://www.npmjs.org/package/gulp-xgettext)
 
 > Gulp plugin for running [GNU xgettext](http://www.gnu.org/software/gettext/manual/gettext.html#xgettext-Invocation).
 
