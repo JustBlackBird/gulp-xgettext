@@ -12,7 +12,7 @@ var buildCommand = function(opt) {
     var opt = opt || {};
     var command = opt.bin || 'xgettext';
 
-    command += ' --omit-header -o -';
+    command += ' -o -';
 
     if (opt.language) {
         command += ' --language="' + opt.language + '"';
@@ -50,6 +50,10 @@ var buildCommand = function(opt) {
                 + keyword.name + (args.length ? (':' + args.join(',')) : '')
                 + '"';
         }
+    }
+
+    if (opt.omitHeader) {
+        command += ' --omit-header';
     }
 
     // Use STDIN as input

@@ -39,7 +39,7 @@ gulp.task('default', function () {
 
 #### options.bin
 
-Type `string`
+Type: `String`
 
 Default: `'xgettext'`
 
@@ -47,13 +47,13 @@ GNU xgettext executable.
 
 #### options.language
 
-Type `string`
+Type: `String`
 
 A language that should be used to parse the files. By default xgettext will try to determine a language by file extension.
 
 #### options.keywords
 
-Type `Array`
+Type: `Array`
 
 List of keywords that should be checked. Each keyword is an object with the following properties:
 
@@ -63,6 +63,12 @@ List of keywords that should be checked. Each keyword is an object with the foll
 - `context`: integer, number of argument that represents context of a string.
 
 All properties, except `name` are optional. Arguments counting starts from one.
+
+#### options.omitHeader
+
+Type: `Boolean`
+
+Indicates if PO file header should be omited. This is equal to cli `--omit-header` flag.
 
 
 ## License
