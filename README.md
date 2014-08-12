@@ -64,12 +64,6 @@ List of keywords that should be checked. Each keyword is an object with the foll
 
 All properties, except `name` are optional. Arguments counting starts from one.
 
-#### options.omitHeader
-
-Type: `Boolean`
-
-Indicates if PO file header should be omited. This is equal to cli `--omit-header` flag.
-
 
 ## License
 

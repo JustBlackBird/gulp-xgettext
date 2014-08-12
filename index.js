@@ -1,5 +1,6 @@
 var gutil = require('gulp-util'),
     through = require('through2'),
+    PoFile = require('pofile'),
     exec = require('child_process').exec;
 
 /**
@@ -52,10 +53,6 @@ var buildCommand = function(opt) {
         }
     }
 
-    if (opt.omitHeader) {
-        command += ' --omit-header';
-    }
-
     // Use STDIN as input
     command += ' -';
 
@@ -82,22 +79,31 @@ var xgettextPlugin = function(options) {
 
         // Run xgettext
         var xgettext = exec(buildCommand(options), function(error, stdout, stderr) {
+            var po = PoFile.parse(stdout);
+
+            // Remove file level comments
+            po.comments = [];
+
             // Use relative path instead of "standart input" string in reference
             // comments.
-            var updatedContents = stdout.replace(/^#:\s+(.*)$/gm, function(match, p) {
+            for (var i = 0; i < po.items.length; i++) {
                 var matches,
-                    references = [],
+                    updatedReferences = [],
                     lineRegExp = /[^:]+:(\d+)/g;
 
-                while (matches = lineRegExp.exec(p)) {
-                    references.push('#: ' + file.relative + ':' + matches[1]);
+                for (var j = 0; j < po.items[i].references.length; j++) {
+                    // "pofile" module does not support more than one reference
+                    // per line. Thus we must deal with it manually.
+                    while (matches = lineRegExp.exec(po.items[i].references[j])) {
+                        updatedReferences.push(file.relative + ':' + matches[1]);
+                    }
                 }
 
-                return references.join('\n');
-            });
+                po.items[i].references = updatedReferences;
+            }
 
             // Update file contents
-            file.contents = new Buffer(updatedContents);
+            file.contents = new Buffer(po.toString());
             stream.push(file);
             callback();
         });
