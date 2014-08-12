@@ -12,7 +12,7 @@ var buildCommand = function(opt) {
     var opt = opt || {};
     var command = opt.bin || 'xgettext';
 
-    command += ' -o -';
+    command += ' --force-po -o -';
 
     if (opt.language) {
         command += ' --language="' + opt.language + '"';
