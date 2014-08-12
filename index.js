@@ -1,6 +1,7 @@
 var gutil = require('gulp-util'),
     through = require('through2'),
     PoFile = require('pofile'),
+    lodash = require('lodash'),
     exec = require('child_process').exec;
 
 /**
@@ -83,6 +84,20 @@ var xgettextPlugin = function(options) {
 
             // Remove file level comments
             po.comments = [];
+            // Use empty values for headers instead of ones defined in xgettext
+            // result. The headers array can be overriden.
+            po.headers = lodash.merge({
+                'Project-Id-Version': '',
+                'Report-Msgid-Bugs-To': '',
+                'POT-Creation-Date': '',
+                'PO-Revision-Date': '',
+                'Last-Translator': '',
+                'Language': '',
+                'Language-Team': '',
+                'Content-Type': '',
+                'Content-Transfer-Encoding': '',
+                'Plural-Forms': '',
+            }, (options.headers || {}));
 
             // Use relative path instead of "standart input" string in reference
             // comments.
