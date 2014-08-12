@@ -96,7 +96,7 @@ var xgettextPlugin = function(options) {
                 'Language-Team': '',
                 'Content-Type': '',
                 'Content-Transfer-Encoding': '',
-                'Plural-Forms': '',
+                'Plural-Forms': ''
             }, (options.headers || {}));
 
             // Use relative path instead of "standart input" string in reference
