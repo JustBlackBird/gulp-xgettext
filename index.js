@@ -84,20 +84,8 @@ var xgettextPlugin = function(options) {
 
             // Remove file level comments
             po.comments = [];
-            // Use empty values for headers instead of ones defined in xgettext
-            // result. The headers array can be overriden.
-            po.headers = lodash.merge({
-                'Project-Id-Version': '',
-                'Report-Msgid-Bugs-To': '',
-                'POT-Creation-Date': '',
-                'PO-Revision-Date': '',
-                'Last-Translator': '',
-                'Language': '',
-                'Language-Team': '',
-                'Content-Type': '',
-                'Content-Transfer-Encoding': '',
-                'Plural-Forms': ''
-            }, (options.headers || {}));
+            // Provide an ability to override headers.
+            po.headers = lodash.merge(po.headers, (options.headers || {}));
 
             // Use relative path instead of "standart input" string in reference
             // comments.

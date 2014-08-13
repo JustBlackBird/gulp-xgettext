@@ -70,7 +70,7 @@ Type: `Object`
 
 A list of headers that will be used in the resulting .po file. The list of available
 headers with their descriptions can be found [here](https://www.gnu.org/software/gettext/manual/html_node/Header-Entry.html#Header-Entry).
-If a header is not specified an empty value will be used.
+If a header is not specified an appropriate `xgettext` value will be used.
 
 
 ## License
