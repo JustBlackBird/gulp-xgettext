@@ -80,6 +80,14 @@ var xgettextPlugin = function(options) {
 
         // Run xgettext
         var xgettext = exec(buildCommand(options), function(error, stdout, stderr) {
+            if (error) {
+                // Something went wrong. Let Gulp know about that.
+                stream.emit('error', new gutil.PluginError('gulp-xgettext', error));
+                callback();
+
+                return;
+            }
+
             var po = PoFile.parse(stdout);
 
             // Remove file level comments

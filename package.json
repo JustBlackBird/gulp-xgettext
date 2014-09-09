@@ -1,6 +1,6 @@
 {
   "name": "gulp-xgettext",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Gulp plugin for GNU xgettext utility",
   "license": "MIT",
   "repository": {
