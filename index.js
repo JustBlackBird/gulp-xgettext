@@ -95,7 +95,7 @@ var xgettextPlugin = function(options) {
             // Provide an ability to override headers.
             po.headers = lodash.merge(po.headers, (options.headers || {}));
 
-            // Use relative path instead of "standart input" string in reference
+            // Use relative path instead of "standard input" string in reference
             // comments.
             for (var i = 0; i < po.items.length; i++) {
                 var matches,
