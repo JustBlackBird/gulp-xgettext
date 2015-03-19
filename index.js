@@ -24,6 +24,13 @@ var buildCommand = function(opt) {
         for (var i = 0, l = opt.keywords.length; i < l; i++) {
             var keyword = opt.keywords[i],
                 args = [];
+
+            /**
+             * See --keyword section of
+             * http://www.gnu.org/software/gettext/manual/gettext.html#Language-specific-options
+             * for details of all possible keywordspec.
+             */
+
             if (!keyword.name || (typeof keyword.name !== 'string')) {
                 throw new gutil.PluginError('gulp-xgettext', 'Name of a keyword must be an not empty string')
             }
