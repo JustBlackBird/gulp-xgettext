@@ -40,18 +40,10 @@ var buildCommand = function(opt) {
             }
 
             if (keyword.plural) {
-                if (keyword.singular) {
-                    throw new gutil.PluginError('gulp-xgettext', '"plural" cannot be set with "singular"');
-                }
-
                 args.push(keyword.plural);
             }
 
             if (keyword.context) {
-                if (keyword.singular) {
-                    throw new gutil.PluginError('gulp-xgettext', '"context" cannot be set with "singular"');
-                }
-
                 args.push(keyword.context + 'c');
             }
 
