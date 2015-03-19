@@ -25,7 +25,7 @@ var buildCommand = function(opt) {
             var keyword = opt.keywords[i],
                 args = [];
             if (!keyword.name || (typeof keyword.name !== 'string')) {
-                throw new gutil.PluginError('gulp-xgettext', 'Name of a keyword must be a not empty string')
+                throw new gutil.PluginError('gulp-xgettext', 'Name of a keyword must be an not empty string')
             }
 
             if (keyword.singular) {
@@ -34,7 +34,7 @@ var buildCommand = function(opt) {
 
             if (keyword.plural) {
                 if (keyword.singular) {
-                    throw new gutil.PluginError('gulp-xgettext', '"plural" cannot be set without "singular"');
+                    throw new gutil.PluginError('gulp-xgettext', '"plural" cannot be set with "singular"');
                 }
 
                 args.push(keyword.plural);
@@ -42,7 +42,7 @@ var buildCommand = function(opt) {
 
             if (keyword.context) {
                 if (keyword.singular) {
-                    throw new gutil.PluginError('gulp-xgettext', '"context" cannot be set without "singular"');
+                    throw new gutil.PluginError('gulp-xgettext', '"context" cannot be set with "singular"');
                 }
 
                 args.push(keyword.context + 'c');
