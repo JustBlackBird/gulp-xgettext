@@ -24,8 +24,15 @@ var buildCommand = function(opt) {
         for (var i = 0, l = opt.keywords.length; i < l; i++) {
             var keyword = opt.keywords[i],
                 args = [];
+
+            /**
+             * See --keyword section of
+             * http://www.gnu.org/software/gettext/manual/gettext.html#Language-specific-options
+             * for details of all possible keywordspec.
+             */
+
             if (!keyword.name || (typeof keyword.name !== 'string')) {
-                throw new gutil.PluginError('gulp-xgettext', 'Name of a keyword must be a not empty string')
+                throw new gutil.PluginError('gulp-xgettext', 'Name of a keyword must be an not empty string')
             }
 
             if (keyword.singular) {
@@ -33,18 +40,10 @@ var buildCommand = function(opt) {
             }
 
             if (keyword.plural) {
-                if (keyword.singular) {
-                    throw new gutil.PluginError('gulp-xgettext', '"plural" cannot be set without "singular"');
-                }
-
                 args.push(keyword.plural);
             }
 
             if (keyword.context) {
-                if (keyword.singular) {
-                    throw new gutil.PluginError('gulp-xgettext', '"context" cannot be set without "singular"');
-                }
-
                 args.push(keyword.context + 'c');
             }
 
