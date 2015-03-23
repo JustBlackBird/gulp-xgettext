@@ -33,7 +33,8 @@ var buildCommand = function(opt) {
             }
 
             if (keyword.plural) {
-                if (keyword.singular) {
+                if (!keyword.singular) {
+                    // Using plural form without singular one has no sense.
                     throw new gutil.PluginError('gulp-xgettext', '"plural" cannot be set without "singular"');
                 }
 
@@ -41,7 +42,8 @@ var buildCommand = function(opt) {
             }
 
             if (keyword.context) {
-                if (keyword.singular) {
+                if (!keyword.singular) {
+                    // Using context without singular form has no sense.
                     throw new gutil.PluginError('gulp-xgettext', '"context" cannot be set without "singular"');
                 }
 
