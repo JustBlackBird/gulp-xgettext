@@ -21,13 +21,13 @@
     "xgettext"
   ],
   "dependencies": {
-    "gulp-util": "~3.0.0",
-    "through2": "^0.5.1",
-    "pofile": "~0.2.12",
-    "lodash": "~2.4.1"
+    "gulp-util": "^3.0.4",
+    "through2": "^0.6.3",
+    "pofile": "^0.2.12",
+    "lodash": "^3.6.0"
   },
   "devDependencies": {
-    "jshint": "~2.6.3"
+    "jshint": "^2.6.3"
   },
   "scripts": {
     "jshint": "node ./node_modules/.bin/jshint index.js"
