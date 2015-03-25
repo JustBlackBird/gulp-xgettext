@@ -25,5 +25,11 @@
     "through2": "^0.5.1",
     "pofile": "~0.2.12",
     "lodash": "~2.4.1"
+  },
+  "devDependencies": {
+    "jshint": "~2.6.3"
+  },
+  "scripts": {
+    "jshint": "node ./node_modules/.bin/jshint index.js"
   }
 }

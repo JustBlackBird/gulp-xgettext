@@ -7,11 +7,11 @@ var gutil = require('gulp-util'),
 /**
  * Builds shell command for GNU xgettext according to specified options.
  *
- * @param {Object} opt List of options.
+ * @param {Object} options List of options.
  * @returns {String} Shell command with all needed flags.
  */
-var buildCommand = function(opt) {
-    var opt = opt || {};
+var buildCommand = function(options) {
+    var opt = options || {};
     var command = opt.bin || 'xgettext';
 
     command += ' --force-po -o -';
@@ -25,7 +25,7 @@ var buildCommand = function(opt) {
             var keyword = opt.keywords[i],
                 args = [];
             if (!keyword.name || (typeof keyword.name !== 'string')) {
-                throw new gutil.PluginError('gulp-xgettext', 'Name of a keyword must be a not empty string')
+                throw new gutil.PluginError('gulp-xgettext', 'Name of a keyword must be a not empty string');
             }
 
             if (keyword.singular) {
@@ -60,7 +60,7 @@ var buildCommand = function(opt) {
     command += ' -';
 
     return command;
-}
+};
 
 var xgettextPlugin = function(options) {
     return through.obj(function(file, enc, callback) {
@@ -107,7 +107,7 @@ var xgettextPlugin = function(options) {
                 for (var j = 0; j < po.items[i].references.length; j++) {
                     // "pofile" module does not support more than one reference
                     // per line. Thus we must deal with it manually.
-                    while (matches = lineRegExp.exec(po.items[i].references[j])) {
+                    while (null !== (matches = lineRegExp.exec(po.items[i].references[j]))) {
                         updatedReferences.push(file.relative + ':' + matches[1]);
                     }
                 }
@@ -125,6 +125,6 @@ var xgettextPlugin = function(options) {
         xgettext.stdin.write(file.contents);
         xgettext.stdin.end();
     });
-}
+};
 
 module.exports = xgettextPlugin;
