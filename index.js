@@ -14,7 +14,7 @@ var buildCommand = function(options) {
     var opt = options || {};
     var command = opt.bin || 'xgettext';
 
-    command += ' --force-po -o -';
+    command += ' --from-code="UTF-8" --force-po -o -';
 
     if (opt.language) {
         command += ' --language="' + opt.language + '"';
