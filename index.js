@@ -20,8 +20,8 @@ var buildCommand = function(options) {
         command += ' --language="' + opt.language + '"';
     }
 
-    if (opt.code) {
-        command += ' --from-code="' + opt.code + '"';
+    if (opt.encoding) {
+        command += ' --from-code="' + opt.encoding + '"';
     }
 
     if (opt.keywords) {

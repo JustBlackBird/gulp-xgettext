@@ -72,6 +72,10 @@ A list of headers that will be used in the resulting .po file. The list of avail
 headers with their descriptions can be found [here](https://www.gnu.org/software/gettext/manual/html_node/Header-Entry.html#Header-Entry).
 If a header is not specified an appropriate `xgettext` value will be used.
 
+#### options.encoding
+
+Specifies the encoding of the input files. This option is needed only if some untranslated message strings or their corresponding comments contain non-ASCII characters By default the input files are assumed to be in ASCII.
+
 
 ## License
 
