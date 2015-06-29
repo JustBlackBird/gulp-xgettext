@@ -20,6 +20,10 @@ var buildCommand = function(options) {
         command += ' --language="' + opt.language + '"';
     }
 
+    if (opt.encoding) {
+        command += ' --from-code="' + opt.encoding + '"';
+    }
+
     if (opt.keywords) {
         for (var i = 0, l = opt.keywords.length; i < l; i++) {
             var keyword = opt.keywords[i],
