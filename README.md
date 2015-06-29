@@ -74,6 +74,8 @@ If a header is not specified an appropriate `xgettext` value will be used.
 
 #### options.encoding
 
+Type: `String`
+
 Specifies the encoding of the input files. This option is needed only if some untranslated message strings or their corresponding comments contain non-ASCII characters By default the input files are assumed to be in ASCII.
 
 
