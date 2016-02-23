@@ -24,6 +24,12 @@ var buildCommand = function(options) {
         command += ' --from-code="' + opt.encoding + '"';
     }
 
+    if ((opt.comments === '') || (opt.comments === true)) {
+        command += ' --add-comments';
+    } else if (typeof opt.comments == 'string') {
+        command += ' --add-comments="' + opt.comments + '"';
+    }
+
     if (opt.keywords) {
         for (var i = 0, l = opt.keywords.length; i < l; i++) {
             var keyword = opt.keywords[i],
