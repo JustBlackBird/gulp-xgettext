@@ -24,7 +24,7 @@ var buildCommand = function(options) {
         command += ' --from-code="' + opt.encoding + '"';
     }
 
-    if ((opt.comments === '') || (opt.comments === true)) {
+    if (opt.comments === true) {
         command += ' --add-comments';
     } else if (typeof opt.comments == 'string') {
         command += ' --add-comments="' + opt.comments + '"';
@@ -68,7 +68,7 @@ var buildCommand = function(options) {
 
     // Use STDIN as input
     command += ' -';
-
+console.log(command);
     return command;
 };
 
