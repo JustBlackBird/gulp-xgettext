@@ -68,7 +68,7 @@ var buildCommand = function(options) {
 
     // Use STDIN as input
     command += ' -';
-console.log(command);
+
     return command;
 };
 
