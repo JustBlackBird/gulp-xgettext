@@ -78,6 +78,12 @@ Type: `String`
 
 Specifies the encoding of the input files. This option is needed only if some untranslated message strings or their corresponding comments contain non-ASCII characters By default the input files are assumed to be in ASCII.
 
+#### options.comments
+
+Type: `String|Boolean`
+
+Reads the comments for translators from the input files and inserts them in the resulting .po file. Using a string as value specifies the ***tag*** of the parameter ``--add-comments[=tag]``, described in [section 5.1.5 of xgettext documentation](https://www.gnu.org/savannah-checkouts/gnu/gettext/manual/html_node/xgettext-Invocation.html). An empty string or the boolean value ``true`` will set the parameter ***add-comments*** without a specific tag.
+
 
 ## License
 
