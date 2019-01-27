@@ -1,4 +1,4 @@
-var gutil = require('gulp-util'),
+var PluginError = require('plugin-error'),
     through = require('through2'),
     PoFile = require('pofile'),
     lodash = require('lodash'),
@@ -35,7 +35,7 @@ var buildCommand = function(options) {
             var keyword = opt.keywords[i],
                 args = [];
             if (!keyword.name || (typeof keyword.name !== 'string')) {
-                throw new gutil.PluginError('gulp-xgettext', 'Name of a keyword must be a not empty string');
+                throw new PluginError('gulp-xgettext', 'Name of a keyword must be a not empty string');
             }
 
             if (keyword.singular) {
@@ -45,7 +45,7 @@ var buildCommand = function(options) {
             if (keyword.plural) {
                 if (!keyword.singular) {
                     // Using plural form without singular one has no sense.
-                    throw new gutil.PluginError('gulp-xgettext', '"plural" cannot be set without "singular"');
+                    throw new PluginError('gulp-xgettext', '"plural" cannot be set without "singular"');
                 }
 
                 args.push(keyword.plural);
@@ -54,7 +54,7 @@ var buildCommand = function(options) {
             if (keyword.context) {
                 if (!keyword.singular) {
                     // Using context without singular form has no sense.
-                    throw new gutil.PluginError('gulp-xgettext', '"context" cannot be set without "singular"');
+                    throw new PluginError('gulp-xgettext', '"context" cannot be set without "singular"');
                 }
 
                 args.push(keyword.context + 'c');
@@ -84,7 +84,7 @@ var xgettextPlugin = function(options) {
         }
 
         if (file.isStream()) {
-            stream.emit('error', new gutil.PluginError('gulp-xgettext', 'Streams are not supported'));
+            stream.emit('error', new PluginError('gulp-xgettext', 'Streams are not supported'));
             callback();
 
             return;
@@ -94,7 +94,7 @@ var xgettextPlugin = function(options) {
         var xgettext = exec(buildCommand(options), function(error, stdout, stderr) {
             if (error) {
                 // Something went wrong. Let Gulp know about that.
-                stream.emit('error', new gutil.PluginError('gulp-xgettext', error));
+                stream.emit('error', new PluginError('gulp-xgettext', error));
                 callback();
 
                 return;
