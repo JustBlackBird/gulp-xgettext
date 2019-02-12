@@ -1,7 +1,7 @@
 var PluginError = require('plugin-error'),
     through = require('through2'),
     PoFile = require('pofile'),
-    lodash = require('lodash'),
+    _merge = require('lodash/merge'),
     exec = require('child_process').exec;
 
 /**
@@ -105,7 +105,7 @@ var xgettextPlugin = function(options) {
             // Remove file level comments
             po.comments = [];
             // Provide an ability to override headers.
-            po.headers = lodash.merge(po.headers, (options.headers || {}));
+            po.headers = _merge(po.headers, (options.headers || {}));
 
             // Use relative path instead of "standard input" string in reference
             // comments.
